@@ -13,6 +13,22 @@ import java.util.stream.Collectors;
 public class Tree {
 
     /**
+     * Formats the output for {@code printTree()}.
+     * @param level the level of tree node with respect to its root
+     * @return a formatted string to stylize the output of {@code printTree()}
+     */
+    public static String formatTreeOutput(int level) {
+        // base case
+        if (level == 0) {
+            String style = "|---";
+            return style;
+        } // if
+
+        String padding = "|   ";
+        return padding +  formatTreeOutput(level -1);
+    } // formatTreeOutput
+
+    /**
      * Ouputs files within a subdirecty in a hiearchial fashion.
      * @param file the file object to list all sub directories
      * @param level the level of the root file in the print tree
@@ -23,14 +39,15 @@ public class Tree {
             return;
         } // if
 
+        String format = formatTreeOutput(level);
         // Base case: files is not a directory
         if (file.isDirectory() == false) {
-            System.out.println(level + " " + file.getName());
+            System.out.println(format + file.getName());
             return;
         } // if
 
         // Recursive case
-        System.out.println(level + " " +  file.getName());
+        System.out.println(format + file.getName());
         Arrays.stream(file.listFiles()).forEach(e -> printTree(e, level + 1));
     } // printTree
 
@@ -42,10 +59,6 @@ public class Tree {
         if (args.length == 0) {
             args = new String[] {"."};
         } // if
-
-        // Debugging: Check if args work correctly
-        String argInput = Arrays.stream(args).collect(Collectors.joining(", ", "[", "]"));
-        System.out.println("args: " + argInput);
 
         // Display the subdirectories of all arguments specified
         Arrays.stream(args).map(e -> new File(e))
