@@ -1,12 +1,17 @@
 # MS-DOS Tree Command
 
 ## Description
-This project serves to implement the [tree](https://en.wikipedia.org/wiki/Tree_(command)) command that originated on the MS-DOS system. \
+This project serves to implement the [tree](https://en.wikipedia.org/wiki/Tree_(command)) command that originated on the MS-DOS system.
 
 ## Objective
 This project highlights my skills with recursion in the implementation of a simplified MS-DOS tree command.\
-This is demonstrated when I used recursion to display all files within a given directory and its sub \
-subdirectories.
+This is demonstrated when I used recursion to display all files within a given directory and its sub directories.
+
+## Results
+When the program is executed on the `src` directory, the following output occurs:
+<p align="center">
+    <img width="338" height="154" src="resources/TreeCommandOuput.PNG">
+
 
 ## Compiling and Execution
 ### Execute the program via Maven
